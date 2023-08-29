@@ -1,6 +1,9 @@
 package com.gildedtros;
 
 class GildedTros {
+
+    private static final int MAX_QUALITY_VALUE = 50;
+    private static final int MIN_QUALITY_VALUE = 0;
     Item[] items;
 
     public GildedTros(Item[] items) {
@@ -9,28 +12,29 @@ class GildedTros {
 
     public void updateQuality() {
         for (Item item:items) {
+            updateSellIn(item);
             if (!item.name.equals("Good Wine")
                     && !item.name.equals("Backstage passes for Re:Factor")
                     && !item.name.equals("Backstage passes for HAXX"))
             {
-                if (item.quality > 0) {
+                if (item.quality > MIN_QUALITY_VALUE) {
                     if (!item.name.equals("B-DAWG Keychain")) {
                         downgradeQuality(item);
                     }
                 }
             } else {
-                if (item.quality < 50) {
+                if (item.quality < MAX_QUALITY_VALUE) {
                     upgradeQuality(item);
 
                     if (item.name.equals("Backstage passes for Re:Factor") || item.name.equals("Backstage passes for HAXX") ) {
                         if (item.sellIn < 11) {
-                            if (item.quality < 50) {
+                            if (item.quality < MAX_QUALITY_VALUE) {
                                 upgradeQuality(item);
                             }
                         }
 
                         if (item.sellIn < 6) {
-                            if (item.quality < 50) {
+                            if (item.quality < MAX_QUALITY_VALUE) {
                                 upgradeQuality(item);
                             }
                         }
@@ -45,7 +49,7 @@ class GildedTros {
             if (item.sellIn < 0) {
                 if (!item.name.equals("Good Wine")) {
                     if (!item.name.equals("Backstage passes for Re:Factor") && !item.name.equals("Backstage passes for HAXX")) {
-                        if (item.quality > 0) {
+                        if (item.quality > MIN_QUALITY_VALUE) {
                             if (!item.name.equals("B-DAWG Keychain")) {
                                 downgradeQuality(item);
                             }
@@ -54,7 +58,7 @@ class GildedTros {
                         zeroQuality(item);
                     }
                 } else {
-                    if (item.quality < 50) {
+                    if (item.quality < MAX_QUALITY_VALUE) {
                         upgradeQuality(item);
                     }
                 }
@@ -71,5 +75,8 @@ class GildedTros {
     }
     private void upgradeQuality(Item item){
         item.quality++;
+    }
+    private void updateSellIn(Item item){
+        item.sellIn--;
     }
 }
