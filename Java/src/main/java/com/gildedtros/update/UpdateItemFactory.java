@@ -4,11 +4,7 @@ import com.gildedtros.Item;
 
 public class UpdateItemFactory {
 
-    private UpdateItemFactory(){
-        throw new IllegalStateException("Factory class is utility class");
-    }
-
-    public static UpdateItemInterface getUpdater(Item item){
+    public UpdateItemInterface getUpdater(Item item){
         if (item.name.equals("Good Wine")){
             return new UpdateWineItem();
         } else if (item.name.equals("B-DAWG Keychain")) {
