@@ -10,7 +10,7 @@ class GildedTrosTest {
     static final String wineItemName = "Good Wine";
     static final String legendaryItemName = "B-DAWG Keychain";
     static final String backstagePassesItemName = "Backstage passes for Re:Factor";
-    static final String smellyitemName = "Duplicate Code";
+    static final String smellyItemName = "Duplicate Code";
 
     @Test
     void foo() {
@@ -161,7 +161,7 @@ class GildedTrosTest {
 
     @Test
     void Update_Smelly_Item_Decrease_Quality_By_2(){
-        Item[] items = new Item[] { new Item(smellyitemName, 3, 6)};
+        Item[] items = new Item[] { new Item(smellyItemName, 3, 6)};
         GildedTros app = new GildedTros(items);
         app.updateQuality();
         assertEquals(4, app.items[0].quality);
@@ -170,7 +170,7 @@ class GildedTrosTest {
 
     @Test
     void Update_Smelly_Item_Decrease_Quality_Not_Negative(){
-        Item[] items = new Item[] { new Item(smellyitemName, 3, 1)};
+        Item[] items = new Item[] { new Item(smellyItemName, 3, 1)};
         GildedTros app = new GildedTros(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
@@ -179,7 +179,7 @@ class GildedTrosTest {
 
     @Test
     void Update_Smelly_Item_Decrease_Quality_By_4_Sell_Date_Passed(){
-        Item[] items = new Item[] { new Item(smellyitemName, 0, 6)};
+        Item[] items = new Item[] { new Item(smellyItemName, 0, 6)};
         GildedTros app = new GildedTros(items);
         app.updateQuality();
         assertEquals(2, app.items[0].quality);

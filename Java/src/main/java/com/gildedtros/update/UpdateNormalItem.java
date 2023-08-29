@@ -5,9 +5,9 @@ import com.gildedtros.Item;
 public class UpdateNormalItem implements UpdateItemInterface{
     @Override
     public void updateItem(Item item) {
-        if (item.quality > 0){
+        if (item.quality > MIN_QUALITY_VALUE){
             item.quality--;
-            if (item.sellIn <= 0 ){
+            if (item.sellIn <= EXPIRATION_DATE ){
                 item.quality--;
             }
         }
